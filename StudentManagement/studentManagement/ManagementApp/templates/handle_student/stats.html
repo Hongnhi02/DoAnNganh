@@ -1,0 +1,146 @@
+{% extends 'layout/base.html'  %}
+
+{% block css_import %}
+<link href="{{ url_for('static', filename='css/register.css') }}" rel="stylesheet" type="text/css"/>
+<link href="{{ url_for('static', filename='css/table-average.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container-fluid box_content">
+    <div class="row content">
+
+        <!-- menu chức năng công tác -->
+        <div class="col-sm-2 sidenav side_nav_news">
+            <h4 class="title_side_nav">Danh mục</h4>
+
+            <ul class="nav nav-pills nav-stacked side_nav_news_list">
+                <li class="active"><a href="/receive_students">Tiếp nhận học sinh</a></li>
+                <li><a href="/list-class">Xem danh sách lớp</a></li>
+                <li><a href="/fix-class">Quản lý lớp học</a></li>
+                <li class="active"><a href="/stats">Thống kê báo cáo</a></li>
+                <li class="active"><a href="/add-teacher">Lập danh sách lớp</a></li>
+            </ul>
+        </div>
+
+
+        <div class="col-sm-10 sidenav side_nav_news" style="margin-left: 150px">
+
+            <h1 style="text-align: center; font-family: 'Moulpali', sans-serif; font-weight: bold; font-size: 50px"> Thống kê báo cáo</h1>
+            <div class="box_contain_register_form">
+
+
+                <form class="row register_form" method="post" enctype="multipart/form-data" action="/stats">
+                    <div class="col-md-6 register_box">
+                        <label class="form-label"> <i class="fa-solid fa-book"></i> Môn học</label>
+                        <input required type="text" name="name_subjects" class="form-control">
+                    </div>
+                    <div class="col-md-6 register_box">
+                        <label class="form-label"> <i class="fa-regular fa-calendar"></i> Năm học</label>
+                        <input required type="text" placeholder="2020-2021" name="school_year" class="form-control">
+                    </div>
+                    <div class="col-md-12 register_box">
+                        <label class="form-label"><i class="fa-solid"></i>Học kỳ</label>
+                        <br>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" name="semester" value="HK1" checked>
+                            <label class="form-check-label">HK 1</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" value="HK2" name="semester">
+                            <label class="form-check-label">HK 2</label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-5 bt_submit">
+                        <br>
+                        <button class=" btn btn-primary form-control" style="background-color: rgb(72, 69, 160)"> Thống kê</button>
+                    </div>
+                </form>
+
+                {% if list_class %}
+                <!--                bảng báo câu -->
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th colspan="2" scope="col">Năm học: {{ school_year.name }}</th>
+                        <td scope="col" style="font-weight: bolder">Học Kỳ: {{ school_year.semester }}</td>
+                        <th colspan="2" scope="col">Môn học: {{ subject.name_subject }}</th>
+                    </tr>
+
+
+                    <tr>
+
+                        <th scope="col">Tên lớp</th>
+                        <th scope="col">Sỉ số</th>
+                        <th scope="col">Số lượng đạt</th>
+                        <th scope="col">Tỷ lệ</th>
+                    </tr>
+
+                    </thead>
+                    <tbody class="table-class-border">
+
+                    {% for i in list_class %}
+                    <tr>
+                        <th scope="row" class="name_class_avg">{{ i['name_class'] }}</th>
+                        <td colspan="1" class="amount_class_avg_sub">{{ i['amount'] }}</td>
+                        <td class="stu_oke">{{ i['stu_oke'] }}</td>
+
+                        <td class="rate_class">{{ i['rate'] }} %</td>
+                    </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+
+            </div>
+            <!--bieu do-->
+            <div>
+                <canvas id="myChart"></canvas>
+            </div>
+
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script src="{{ url_for('static', filename='js/chart_js.js') }}"></script>
+            <script>
+                    let list  = document.getElementsByClassName('name_class_avg')
+                    var list_name_class = []
+                    for(i = 0 ; i < list.length ; i++)
+                    {
+                               list_name_class.push(list[i].innerHTML)
+                    }
+
+                   let list_amount  = document.getElementsByClassName('amount_class_avg_sub')
+                   var list_amount_class = []
+                   for(i = 0 ; i < list_amount.length ; i++)
+                   {
+
+                            console.log(list_amount[i].innerHTML)
+                           list_amount_class.push(list_amount[i].innerHTML)
+                   }
+                
+
+                   let list_stu_oke  = document.getElementsByClassName('stu_oke')
+                   var list_stu_oke_class = []
+                   for(i = 0 ; i < list_stu_oke.length ; i++)
+                   {
+
+
+                            list_stu_oke_class.push(list_stu_oke[i].innerHTML)
+                   }
+
+                window.onload = function(){
+                    drawChartJs(list_name_class,list_amount_class,list_stu_oke_class)
+                }
+            </script>
+
+
+                {% endif %}
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Học kì năm học</title>
+
+     <link href="{{ url_for('static', filename='css/choose_school_year.css') }}" rel="stylesheet"/>
+</head>
+
+<body>
+
+    <div class="error">
+        <div class="error__title">Chọn học kỳ</div>
+
+       {% for i in list_year %}
+             <a href="{{ url_for('lms',id = i.id ) }}" id="{{ i.id }}" onclick="switch_school_year_teaching(this)" class="box_schoold_year">{{ i.semester }} {{ i.name }}</a>
+        {% endfor %}
+    </div>
+</body>
+
+</html>

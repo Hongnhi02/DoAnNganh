@@ -1,0 +1,117 @@
+{% extends 'layout/base.html' %}
+{% block css_import %}
+    <link href="{{ url_for('static', filename='css/handle-class.css') }}" rel="stylesheet"/>
+
+{% endblock %}
+{% block content%}
+<div class=" box_content">
+    <div class="row content">
+
+        <div class="col-sm-10 content_teaching_1">
+            <div class="container mt-3">
+                <h2 style="font-size: 40px;">DANH SÁCH LỚP</h2>
+                <ul class="list-group" >
+                    <li class="list-group-item" style="background-color: #659DBD;">
+                        <div class="group-class">
+                            <span class="group-class-item">Khối 10</span>
+                        </div>
+                        <div class="all_card">
+                            {% for i in list_class_10 %}
+                            <div class="card" style="width: 18rem;">
+                                <script>
+                                    var subjectDict = {
+                                        '10a1': {'name_subject': 'Sinh 10', 'image_filename': 'Sinh10.jpg'},
+                                        '10a2': {'name_subject': 'Sử 10', 'image_filename': 'Su10.png'},
+                                        '10a3': {'name_subject': 'Toán 10', 'image_filename': 'Toan10.jpg'},
+                                        // Thêm các mục khác cho các lớp khác
+                                    };
+                                    var subjectInfo = subjectDict['{{ i.Class.name_class }}'];
+                                    document.write('<img src="{{ url_for('static', filename='image/') }}' + subjectInfo.image_filename + '" class="card-img-top" alt="...">');
+                                    document.write('<div class="card-body">');
+                                    document.write('<h5 class="card-title">' + subjectInfo.name_subject + '</h5>');
+                                    document.write('<a href="{{ url_for('render_template_score', id_year=id_year, id_class=i.Class.id, id_subject=i.Subjects.id) }}" class="btn btn-primary" style="background-color: rgb(72, 69, 160);">' + '{{ i.Class.name_class }}' + '</a>');
+                                    document.write('</div>');
+                                </script>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </li>
+
+
+                    <li class="list-group-item" style="background-color: #659DBD;">
+                        <div class="group-class">
+                            <span class="group-class-item">Khối 11</span>
+                        </div>
+                        <div class="all_card">
+                            {% for i in list_class_11 %}
+                            <div class="card" style="width: 18rem;">
+                                <script>
+                                    var subjectDict = {
+                                        '11a1': {'name_subject': 'Sinh 11', 'image_filename': 'Sinh11.jpg'},
+                                        '11a2': {'name_subject': 'Sử 11', 'image_filename': 'Su11.jpg'},
+                                        '11a3': {'name_subject': 'Toán 11', 'image_filename': 'Toan11.jpg'},
+                                        // Thêm các mục khác cho các lớp khác
+                                    };
+                                    var subjectInfo = subjectDict['{{ i.Class.name_class }}'];
+                                    document.write('<img src="{{ url_for('static', filename='image/') }}' + subjectInfo.image_filename + '" class="card-img-top" alt="...">');
+                                    document.write('<div class="card-body">');
+                                    document.write('<h5 class="card-title">' + subjectInfo.name_subject + '</h5>');
+                                    document.write('<a href="{{ url_for('render_template_score', id_year=id_year, id_class=i.Class.id, id_subject=i.Subjects.id) }}" class="btn btn-primary" style="background-color: rgb(72, 69, 160);">' + '{{ i.Class.name_class }}' + '</a>');
+                                    document.write('</div>');
+                                </script>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </li>
+                    <li class="list-group-item" style="background-color: #659DBD;">
+                        <div class="group-class">
+                            <span class="group-class-item">Khối 12</span>
+                        </div>
+                        <div class="all_card">
+                            {% for i in list_class_12 %}
+                            <div class="card" style="width: 18rem;">
+                                <script>
+                                    var subjectDict = {
+                                        '12a1': {'name_subject': 'Sinh 12', 'image_filename': 'Sinh12.jpg'},
+                                        '12a2': {'name_subject': 'Sử 12', 'image_filename': 'Su12.png'},
+                                        '12a3': {'name_subject': 'Toán 12', 'image_filename': 'Toan12.jpg'},
+                                        // Thêm các mục khác cho các lớp khác
+                                    };
+                                    var subjectInfo = subjectDict['{{ i.Class.name_class }}'];
+                                    document.write('<img src="{{ url_for('static', filename='image/') }}' + subjectInfo.image_filename + '" class="card-img-top" alt="...">');
+                                    document.write('<div class="card-body">');
+                                    document.write('<h5 class="card-title">' + subjectInfo.name_subject + '</h5>');
+                                    document.write('<a href="{{ url_for('render_template_score', id_year=id_year, id_class=i.Class.id, id_subject=i.Subjects.id) }}" class="btn btn-primary" style="background-color: rgb(72, 69, 160);">' + '{{ i.Class.name_class }}' + '</a>');
+                                    document.write('</div>');
+                                </script>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script>
+        window.onscroll = function() {myFunction()};
+
+        var header = document.getElementById("myHeader");
+        var sticky = header.offsetTop - 121.08;
+        function myFunction() {
+          if (window.pageYOffset > sticky) {
+            header.classList.add("sticky");
+          }else{
+            header.classList.remove("sticky")
+          }
+        }
+
+
+        <script>
+
+</script>
+    </script>
+{% endblock%}
+
+

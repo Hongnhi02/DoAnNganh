@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@300&family=Dangrek&family=Moulpali&family=Shantell+Sans:wght@300&display=swap');
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.register_box {
+
+    margin-bottom: 2%
+}
+
+.box_contain_register_form {
+    border-left-style: solid;
+    border-right-style: solid;
+    margin: 0;
+    padding-top: 10px;
+    padding-left: 5%;
+    padding-right: 5%;
+
+}
+
+.register_form {
+    /* background-color: rgba(215, 215, 215, 0.418); */
+    background-color: #659DBD;
+    padding: 10px;
+    border-radius: 10px;
+
+}
+
+.bt_submit {
+    margin: 0 auto;
+}
+
+body {
+    /* background-color: red; */
+}
+
+.register_box_role {
+    /*border-left-style: solid;*/
+}
+
+.register_box_role ul {
+    list-style-type: none;
+    display: flex;
+    justify-self: center;
+}
+
+.register_box_role ul li {
+    display: block;
+    background-color: rgb(255, 255, 255);
+    padding: 5px;
+    margin: 15px;
+    border-radius: 10px;
+    width: 120px;
+    text-align:center;
+}
+
+input[type=checkbox] {
+    accent-color: rgb(255, 255, 255) !important;
+}
+
+.alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+}
+
+.box_alert{
+    transition: 2s;
+    position: fixed;
+
+    right:0;
+    bottom: 0;
+    /* transform: scale(1.5); */
+}
+.success{
+    background-color: #00BF63;
+}
+.side_nav_news_list li a {
+    transition: all 0.3s ease;
+    font-size: 16px;
+    color: #6d89b1;
+}
+
+.side_nav_news_list li a:hover {
+    transform: scale(1.1);
+    font-size: 18px;
+    /* color: #ff0000; */
+}
+
+.side_nav_news_list li a:active {
+    transform: scale(0.9);
+    font-size: 14px;
+    color: #024940;
+}

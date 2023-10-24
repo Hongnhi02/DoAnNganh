@@ -1,0 +1,93 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@300&family=Biryani:wght@200&family=Dangrek&family=Jura:wght@300&family=Lobster&family=Moulpali&family=Shantell+Sans:wght@300&display=swap" rel="stylesheet">
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  /*background: linear-gradient(90deg, rgba(47,54,64,1) 23%, rgba(24,27,32,1) 100%);*/
+  background-color:#242582;
+}
+
+.error {
+  position: absolute;
+  left: 500px;
+  top: 400px;
+  transform: translateY(-60%);
+  font-family: 'Righteous', cursive;
+  color: #363e49;
+  align-items: center;
+  justify-content: center;
+}
+
+.error__title {
+   font-family:'Lobster', cursive !important;
+   margin-top: -60%;
+  font-size: 5vw;
+  background-color: rgba(255, 255, 255, 0);
+  color:black;
+  margin-bottom: 30px
+}
+
+.error__subtitle {
+  font-size: 2em;
+}
+
+.error__description {
+  opacity: 0.5;
+}
+
+.error__button {
+  min-width: 7em;
+  margin-top: 3em;
+  margin-right: 0.5em;
+  padding: 0.5em 2em;
+  outline: none;
+  border: 2px solid #2f3640;
+  /*background-color: transparent;*/
+  background-color: #05386B;
+  border-radius: 8em;
+  color: #576375;
+  cursor: pointer;
+  transition-duration: 0.2s;
+  font-size: 0.75em;
+  font-family: 'Righteous', cursive;
+}
+
+.error__button:hover {
+  color: #21252c;
+}
+
+.error__button--active {
+  background-color: #e67e22;
+  border: 2px solid #e67e22;
+  color: white;
+}
+
+.error__button--active:hover {
+  box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.5);
+  color: white;
+}
+
+.box_schoold_year{
+  margin: 5%;
+  /*background-color: rgb(72, 72, 72);*/
+  background-color: #97CAEF;
+  color: white;
+  padding: 5%;
+  border-radius: 20px;
+  text-align: center;
+  transition: 0.5s;
+  display:block;
+}
+.box_schoold_year:hover{
+  background-color: #7395AE;
+  transition: transform 0.3s ease;
+}
+.box_schoold_year:hover {
+  transform: scale(1.2);
+}
+.box_schoold_year.clicked {
+  transform: scale(0.8);
+}

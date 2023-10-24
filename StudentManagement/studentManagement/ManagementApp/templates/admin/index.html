@@ -1,0 +1,18 @@
+{% if current_user.is_authenticated %}
+
+    {% extends 'admin/master.html' %}
+
+    {% block body %}
+        <h1 class="text-center text-success">QUẢN TRỊ HỆ THỐNG QUẢN LÝ HỌC SINH</h1>
+<!--       <h1></h1>-->
+    {% endblock %}
+
+{% else %}
+    {% include 'request_page/401.html' %}
+
+
+
+{% endif %}
+
+
+

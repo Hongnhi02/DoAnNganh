@@ -1,0 +1,189 @@
+<!--  -->
+
+
+
+
+
+<div class="sticky-top row ">
+    <nav class="navbar navbar-light bg-light  sticky-top navbar-expand-sm">
+
+
+        <div class="container-fluid">
+            <div class="header_nav_title">
+                <a class="navbar-brand title_nav header_nav_title" href="/">
+                    <img src="{{ url_for('static', filename='image/Logo.jpg') }}"
+                        alt="" width="100px" height="70px" class="d-inline-block align-text-top">
+
+                    <h1
+                        style="font-size: 1.1vw; color: rgb(19, 3, 80); font-weight: 700; padding-top: 7px; padding-left: 5px;">
+                        Trường Trung Học Phổ Thông <br>CS3 NHÀ BÈ</span></h1>
+                </a>
+            </div>
+
+
+
+
+        </div>
+
+        <div>
+
+
+            <form class="d-flex" action="/">
+                <input class="form-control me-2" name="keyword" type="text" placeholder="Tìm kiếm từ khóa...">
+                <button class="btn btn-dark" type="submit"><i class="fas fa-search" style="font-size: 20px"></i></button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="row">
+        <div class="topnav">
+            <a class="active" href="#home"><i class="fa-solid fa-house-user"></i> Trang chủ</a>
+            <a href="/"><i class="fas fa-newspaper"></i> Tin tức</a>
+
+
+
+            {% if user %}
+                 {% if user.active %}
+                   {% for i in user.role %}
+                            {% if i.role == 'teacher' %}
+                                <a href="/choose_school_year"><i class="fas fa-chalkboard-teacher"></i>Giáo viên</a>
+
+                            {% endif %}
+
+                            {% if i.role == 'academic_staff' %}
+                                <a href="/register"><i class="fas fa-user-plus"></i> Đăng ký người dùng</a>
+                                 <a href="/receive_students"><i class="fas fa-briefcase"></i> Giáo vụ</a>
+                            {% endif %}
+                  {% endfor %}
+                 {% endif %}
+            {% endif %}
+
+             {% if current_user.is_authenticated %}
+                
+                 <div class="box_user_loged">
+                        <a class="nav-link" href="#!" style="background-color:#C5CBE3; border-radius:8px">
+                             {{ current_user.name }}
+
+                            <img src="{{ current_user.image }}" width="20" height="20" class="rounded-circle" alt="{{ current_user.name }}" />
+
+                        </a>
+                        <a class="nav-link bt_logout" href="/logout" style="background-color: #557A95; border-radius:8px"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+                </div>
+                 {% else %}
+
+
+                <button id="login_bt" onclick="click_login()" style="border-radius:10px; background-color: #659DBD"><i class="fa-solid fa-arrow-right-to-bracket"></i> Đăng Nhập</button>
+
+             {% endif %}
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!--ô đăng nhập -->
+{% if current_user.is_authenticated %}
+
+    {% else %}
+    <div class="login_ui">
+        <section class="background_login_form" id="bg_login_form">
+       </section>
+        <div id="main-wrapper" class="container login_form_contain" >
+            <div class="row justify-content-center login_form">
+                <div class="col-xl-10">
+                    <div class="card border-0">
+                        <div class="card-body p-0">
+                            <div class="row no-gutters">
+<!--                                <div class="col-lg-6" >-->
+                                    <div class="p-5">
+                                        <div class="mb-5">
+                                            <h3 class="h4 font-weight-bold text-theme" style="font-size:40px; text-align: center; ">Đăng nhập</h3>
+                                        </div>
+
+                                        <h6 class="h5 mb-0" style="font-size:26px; text-align: center;">Chào mừng bạn trở lại!</h6>
+                                        <p class="text-muted mt-2 mb-5" style="font-size:22px;">Nhập địa chỉ email và mật khẩu của bạn
+                                            vào bảng quản trị để truy cập.</p>
+
+                                         <form method="post" enctype="multipart/form-data" action="/" style="left: 50px">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1" style="font-size:22px">Tên đăng nhập </label>
+                                                <input type="text" class="form-control" style="font-size:22px" name="username_login" id="exampleInputEmail1">
+                                            </div>
+                                            <div class="form-group mb-5">
+                                                <label for="exampleInputPassword1" style="font-size:22px !important">Mật khẩu</label>
+                                                <input type="password" class="form-control"
+                                                      style="font-size:22px" name="password_login"  id="exampleInputPassword1">
+                                            </div>
+                                            <button type="submit" class="btn btn-theme" style="font-size:22px;">Đăng nhập</button>
+                                            <a href="#l" class="forgot-link float-right text-primary" style="font-size:22px;">Quên mật khẩu?</a>
+                                        </form>
+                                    </div>
+<!--                                </div>-->
+
+<!--                                <div class="col-lg-6 d-none d-lg-inline-block">-->
+<!--                                    <div class="account-block rounded-right">-->
+<!--                                        <div class="overlay rounded-right"></div>-->
+<!--                                        <div class="account-testimonial">-->
+<!--                                            <h4 class="text-white mb-4">VO THI HONG NGAN</h4>-->
+<!--                                            <p class="lead text-white">"Best investment i made for a long time. Can only-->
+<!--                                                recommend it for other users."</p>-->
+<!--                                            <p>- Admin User</p>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+                            </div>
+
+                        </div>
+                        <!-- end card-body -->
+                    </div>
+                    <!-- end card -->
+
+
+                    <!-- end row -->
+
+                </div>
+                <!-- end col -->
+            </div>
+            <!-- Row -->
+        </div>
+    </div>
+
+
+
+    {% if err_msg %}
+            <div class="alert box_alert" id="box_alert_fail_login">
+                <span class="closebtn">&times;</span>
+                <strong>Cảnh báo</strong> Đăng nhập thất bại do : {{ err_msg }}
+            </div>
+    {% endif %}
+
+ {% endif %}
+
+<script src="{{ url_for('static', filename='js/login.js') }}"></script>
+
+<script>
+    var close = document.getElementsByClassName("closebtn");
+    var i;
+
+    for (i = 0; i < close.length; i++) {
+        close[i].onclick = function () {
+            var div = this.parentElement;
+            div.style.opacity = "0";
+            setTimeout(function () { div.style.display = "none"; }, 600);
+        }
+    }
+
+
+    setTimeout(() => {
+        var b = document.getElementById('box_alert_fail_login');
+
+        if (b != null) {
+            console.log(b)
+            b.style.display = 'none'
+        }
+
+    }, 3000)
+
+</script>
